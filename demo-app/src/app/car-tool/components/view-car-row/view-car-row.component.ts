@@ -14,9 +14,7 @@ export class ViewCarRowComponent implements OnInit {
   deleteCar = new EventEmitter<number>();
 
   @Output()
-  editable = new EventEmitter<boolean>();
-
-
+  editCar = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit() {
@@ -27,12 +25,9 @@ export class ViewCarRowComponent implements OnInit {
       this.car.id
     );
   }
-
-  isEditable() {
-    this.editable.emit(
-      this.car.id
-    );
+  doEditCar() {
+      this.editCar.emit(
+        this.car.id
+      );
   }
-
-
 }

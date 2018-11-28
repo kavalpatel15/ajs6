@@ -14,7 +14,7 @@ export class CarTableComponent implements OnInit {
   deleteCar = new EventEmitter<number> ();
   constructor() { }
 
-  carIds = -1;
+  editCarId = -1;
 
   ngOnInit() {
   }
@@ -22,9 +22,11 @@ export class CarTableComponent implements OnInit {
   doDeleteCar(carId: number) {
     this.deleteCar.emit(carId);
   }
-  doChangeEditable(carId: number) {
-    this.carIds = carId;
+  doEditCar(carId: number) {
+   this.editCarId = carId;
   }
-
+  doCancelEdit(carId: number) {
+    this.editCarId = carId;
+  }
 
 }
