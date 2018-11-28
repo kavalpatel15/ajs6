@@ -1,5 +1,5 @@
 export interface Car {
-    id?: 1;
+    id?: number;
     make: string;
     model: string;
     year: number;

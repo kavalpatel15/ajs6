@@ -11,10 +11,11 @@
     </tr>
   </thead>
   <tbody>
-    <!-- <tr *ngFor="let car of cars" edit-car-row [car] = "car"></tr> -->
-    <ng-container *ngFor="let car of cars">
-      <tr *ngIf="car.id === editCarId" edit-car-row [car] ="car" (cancelEditCar)="doCancelEdit($event)" (saveEditCar) = "saveUpdatedCar()" ></tr>
-      <tr *ngIf="car.id !== editCarId"  view-car-row [car]="car" (deleteCar)="doDeleteCar($event)" (editCar)="doEditCar($event)"></tr>
-    </ng-container>
+      <ng-container *ngFor="let car of cars">
+          <tr *ngIf="car.id !== editCarId" class="view-car-row" [car]="car"
+            (editCar)="editCar.emit($event)" (deleteCar)="deleteCar.emit($event)"></tr>
+          <tr *ngIf="car.id === editCarId" class="edit-car-row" [car]="car"
+            (saveCar)="saveCar.emit($event)" (cancelCar)="cancelCar.emit()"></tr>
+        </ng-container>    
   </tbody>
 </table>

@@ -10,10 +10,10 @@ import { Car } from '../../models/cars';
 export class CarFormComponent implements OnInit {
 
   @Input()
-  buttonText = 'Submit Car Form';
+  buttonText = 'Submit Form';
 
   @Output()
-  submitCar = new EventEmitter<Car>();
+  submitForm = new EventEmitter<Car>();
 
   carForm: FormGroup;
 
@@ -30,14 +30,8 @@ export class CarFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  doSubmitCar() {
-    this.submitCar.emit({
-      make: this.carForm.value.make,
-      model: this.carForm.value.model,
-      year: this.carForm.value.year,
-      color: this.carForm.value.color,
-      price: this.carForm.value.price,
-    });
+  doSubmitForm() {
+    this.submitForm.emit({ ...this.carForm.value });
     this.carForm.reset();
   }
 

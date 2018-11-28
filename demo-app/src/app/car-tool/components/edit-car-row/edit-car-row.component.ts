@@ -2,46 +2,37 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Car } from '../../models/cars';
 @Component({
-  selector: '[edit-car-row]',
+  selector: '.edit-car-row',
   templateUrl: './edit-car-row.component.html',
   styleUrls: ['./edit-car-row.component.css']
 })
 export class EditCarRowComponent implements OnInit {
+  carForm: FormGroup;
 
   @Input()
   car: Car;
 
   @Output()
-  cancelEditCar = new EventEmitter<number>();
+  saveCar = new EventEmitter<Car>();
 
   @Output()
-  saveEditCar = new EventEmitter<Car>();
+  cancelCar = new EventEmitter<void>();
 
-
-  carForm = this.fb.group({
-    make: this.car.make,
-    model: this.car.model,
-    year: this.car.year,
-    color: this.car.color,
-    price: this.car.price,
-  });
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-  }
-  doCancelEditCar() {
-    this.cancelEditCar.emit(
-      -1
-    );
+    this.carForm = this.fb.group({
+      make: this.car.make,
+      model: this.car.model,
+      year: this.car.year,
+      color: this.car.color,
+      price: this.car.price,
+    });
   }
 
-  doSaveEditCar() {
-    this.saveEditCar.emit(
-
-    );
-    this.cancelEditCar.emit(
-      -1
-    );
+  doSaveCar() {
+    this.saveCar.emit({ ...this.carForm.value, id: this.car.id, });
+    this.carForm.reset();
   }
+
 }
-

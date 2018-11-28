@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Car } from '../../models/cars';
 @Component({
-  selector: '[view-car-row]',
+  selector: '.view-car-row',
   templateUrl: './view-car-row.component.html',
   styleUrls: ['./view-car-row.component.css']
 })

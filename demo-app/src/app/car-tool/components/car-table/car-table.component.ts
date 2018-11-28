@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Car } from '../../models/cars';
 
 @Component({
   selector: 'car-table',
@@ -8,25 +9,25 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class CarTableComponent implements OnInit {
 
   @Input()
-  cars;
+  cars: Car[];
+
+  @Input()
+  editCarId: number;
 
   @Output()
-  deleteCar = new EventEmitter<number> ();
+  editCar = new EventEmitter<number>();
+
+  @Output()
+  deleteCar = new EventEmitter<number>();
+
+  @Output()
+  saveCar = new EventEmitter<Car>();
+
+  @Output()
+  cancelCar = new EventEmitter<void>();
+
   constructor() { }
-
-  editCarId = -1;
-
   ngOnInit() {
-  }
-
-  doDeleteCar(carId: number) {
-    this.deleteCar.emit(carId);
-  }
-  doEditCar(carId: number) {
-   this.editCarId = carId;
-  }
-  doCancelEdit(carId: number) {
-    this.editCarId = carId;
   }
 
 }
