@@ -1,0 +1,7 @@
+th,td {
+    border-style:  double;
+    padding: 15px;
+}
+th{
+    background-color: blueviolet;
+}

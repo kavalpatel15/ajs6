@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Year</th>
+      <th>Color</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of cars" edit-car-row [car] = "car"></tr>
+    <!-- <ng-container *ngFor="let car of cars">
+      <tr *ngIf="car.id === carIds" edit-car-row [car] ="car"></tr>
+      <tr *ngIf="car.id !== carIds"  view-car-row [car]="car" (deleteCar)="doDeleteCar($event)"></tr>
+    </ng-container> -->
+  </tbody>
+</table>
